@@ -88,7 +88,7 @@ export function AuthProvider({ children }) {
       
       if (urlToken) {
         localStorage.setItem('token', urlToken)
-        // Clean the URL
+        
         window.history.replaceState({}, document.title, window.location.pathname)
       }
       
@@ -100,7 +100,7 @@ export function AuthProvider({ children }) {
 
       const response = await axios.get('/api/proxy/auth/me', {
       headers: { Authorization: `Bearer ${token}` },
-      data: undefined // Explicitly no body
+      data: undefined 
     });
       
       setUser(response.data)

@@ -12,7 +12,7 @@ export default function PhoneNumberForm() {
   const handleSubmit = async (e) => {
   e.preventDefault();
   
-  // Basic validation
+  
   if (!phoneNumber || !phoneNumber.startsWith('+')) {
     setError('Please enter a valid phone number starting with +');
     return;
@@ -26,13 +26,13 @@ export default function PhoneNumberForm() {
       headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
     });
     
-    // Update user context with new phone number
+    
     setSuccess(true);
     setTimeout(() => setSuccess(false), 3000);
   } catch (err) {
     let errorMsg = 'Failed to save phone number. Please try again.';
     
-    // Use backend error message if available
+    
     if (err.response?.data?.message) {
       errorMsg = err.response.data.message;
     }
@@ -67,7 +67,7 @@ export default function PhoneNumberForm() {
         <button
           type="submit"
           disabled={loading}
-          className="px-4 py-2 bg-primary text-white rounded hover:bg-primary-dark transition disabled:opacity-50"
+          className="px-4 py-2 bg-primary text-black rounded hover:bg-primary-dark transition disabled:opacity-50"
         >
           {loading ? 'Saving...' : 'Save Phone Number'}
         </button>

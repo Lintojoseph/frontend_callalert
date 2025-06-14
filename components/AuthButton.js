@@ -41,10 +41,10 @@ export default function AuthButton() {
   const { user, logout } = useAuth()
 
   const handleGoogleLogin = () => {
-    // Clear any existing tokens
+   
     localStorage.removeItem('token')
     
-    // Redirect to backend auth endpoint
+    
     window.location.href = `${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/google`
   }
 

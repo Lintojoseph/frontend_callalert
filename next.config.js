@@ -4,6 +4,15 @@ const nextConfig = {
   images: {
     domains: ['lh3.googleusercontent.com'],
   },
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3001',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, '')
+      }
+    }
+  },
 }
 
 module.exports = nextConfig

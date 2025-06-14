@@ -43,13 +43,13 @@ export default async function handler(req, res) {
         'Authorization': headers.authorization || ''
       },
       params: req.query,
-      // Only include data for non-GET requests
+      
       data: req.method !== 'GET' ? req.body : undefined
     };
 
-    // Special handling for GET requests
+    
     if (req.method === 'GET') {
-      // Ensure no body is sent for GET requests
+      
       delete axiosConfig.data;
     }
 
@@ -58,13 +58,13 @@ export default async function handler(req, res) {
     // Forward the response from the backend
     res.status(response.status).json(response.data);
   } catch (error) {
-    // Handle Axios errors (when backend responds with error status)
+    
     if (error.response) {
       const { status, data } = error.response;
       return res.status(status).json(data);
     }
     
-    // Handle network errors or other issues
+    
     console.error('Proxy error:', {
       url: backendUrl,
       method: req.method,

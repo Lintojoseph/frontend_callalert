@@ -91,11 +91,11 @@ export default function EventList() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
 
-  // Debugging: Log events when they change
+  
   useEffect(() => {
     console.log("Events received:", events);
     
-    // Log details of each event
+    
     events.forEach((event, index) => {
       console.log(`Event #${index + 1}:`, {
         id: event.id,
@@ -124,7 +124,7 @@ export default function EventList() {
     } catch (err) {
       let errorMsg = 'Failed to fetch events. Please try again.';
       
-      // Handle specific error cases
+      
       if (err.response?.status === 401) {
         errorMsg = 'Authentication expired. Please log in again.';
         logout();
@@ -197,9 +197,9 @@ export default function EventList() {
       ) : events.length === 0 ? (
         <div className="bg-yellow-50 border border-yellow-200 rounded-md p-4 text-center">
           <p>No upcoming events found.</p>
-          <p className="text-sm text-gray-600 mt-1">
+          {/* <p className="text-sm text-gray-600 mt-1">
             Create events in your Google Calendar to see them here.
-          </p>
+          </p> */}
         </div>
       ) : (
         <div className="space-y-4">
